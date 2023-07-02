@@ -41,6 +41,28 @@ app.get('/getjson', (req, res) => {
     res.json({ id: 1, name: "Alper" })
 })
 
+
+//request types
+
+app.get('/deneme', (req, res) => {
+    res.send(`${req.method} Request`)
+})
+
+app.put('/deneme', (req, res) => {
+    res.send(`${req.method} Request`)
+})
+
+app.delete('/deneme', (req, res) => {
+    res.send(`${req.method} Request`)
+})
+
+app.post('/deneme', (req, res) => {
+    res.send(`${req.method} Request`)
+})
+
+
+
+
 app.listen(port, () => {
     console.log(`proje http://localhost:${port} üzerinden çalışıyor`);
 })
