@@ -1,7 +1,13 @@
 const multer = require("multer");
+const fs = require("fs")
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        if (!fs.existsSync("./uploads")) {
+            fs.mkdirSync("./uploads")
+        }
+
         console.log("destination", file)
         cb(null, 'uploads')
     },
@@ -13,11 +19,11 @@ const storage = multer.diskStorage({
 
 
 const fileFilter = (req, file, cb) => {
-    
+
     console.log("file filter", file)
     cb(null, true);
 }
 
-const upload = multer({ storage: storage, fileFilter: fileFilter }).single('dosya');
+const upload = multer({ storage: storage, fileFilter: fileFilter })
 
 module.exports = upload;
